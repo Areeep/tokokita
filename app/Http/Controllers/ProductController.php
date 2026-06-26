@@ -43,4 +43,33 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'New Product Added!');
     }
+
+    public function edit(Product $product) {
+        return view('products.edit', compact('product'));
+    }
+
+    public function update(Request $request, Product $product) {
+        $request->validate([
+            'nama' => 'required',
+            'harga' => 'required|numeric',
+        ]);
+
+        $product->nama = $request->nama;
+        $product->harga = str_replace(".", "", $request->harga);
+        $product->deskripsi = $request->deskripsi;
+
+        if($request->file('foto')) {
+            if ($product->foto !== 'products/noimage.png') {
+                Storage::disk('public')->delete($product->foto);
+            }
+            $path = $request->file('foto')->store('products', 'public');
+            $product->foto = $path;
+        }
+
+        $product->update();
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Product Updated!');
+    }
 }

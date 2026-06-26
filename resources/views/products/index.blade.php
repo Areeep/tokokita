@@ -16,12 +16,15 @@
         <div class="grid grid-cols-1 md:grid-cols-3 mt-4 gap-6">
             @foreach ($products as $product)
                 <div class="">
-                    <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama }}">
+                    <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama }}"
+                        class="w-full h-[350px] object-cover rounded-md">
                     <div class="my-2">
                         <p class="text-xl font-light">{{ $product->nama }}</p>
                         <p class="font-semibold text-gray-400">Rp {{ number_format($product->harga) }}</p>
                     </div>
-                    <button class="bg-gray-100 px-10 py-2 rounded-md w-full font-semibold">Edit</button>
+                    <a href="{{ route('products.edit', $product) }}">
+                        <button class="bg-gray-100 px-10 py-2 rounded-md w-full font-semibold">Edit</button>
+                    </a>
                 </div>
             @endforeach
         </div>

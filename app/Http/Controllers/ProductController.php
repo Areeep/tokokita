@@ -72,4 +72,16 @@ class ProductController extends Controller
             ->route('products.index')
             ->with('success', 'Product Updated!');
     }
+
+    public function destroy(Product $product) {
+        if($product->foto !== "products/noimage.png") {
+            Storage::disk('public')->delete($product->foto);
+        }
+
+        $product->delete();
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Product Deleted!');
+    }
 }

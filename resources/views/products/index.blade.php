@@ -21,10 +21,15 @@
                     <div class="my-2">
                         <p class="text-xl font-light">{{ $product->nama }}</p>
                         <p class="font-semibold text-gray-400">Rp {{ number_format($product->harga) }}</p>
+                        @if ($product->category)
+                            <p class="text-sm text-gray-500">{{ $product->category->nama }}</p>
+                        @endif
                     </div>
-                    <a href="{{ route('products.edit', $product) }}">
-                        <button class="bg-gray-100 px-10 py-2 rounded-md w-full font-semibold">Edit</button>
-                    </a>
+                    @can('update', $product)
+                        <a href="{{ route('products.edit', $product) }}">
+                            <button class="bg-gray-100 px-10 py-2 rounded-md w-full font-semibold">Edit</button>
+                        </a>
+                    @endcan
                 </div>
             @endforeach
         </div>

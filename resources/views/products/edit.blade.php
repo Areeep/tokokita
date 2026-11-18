@@ -3,7 +3,7 @@
         <div class="mt-6 flex justify-between items-center">
             <h2 class="font-semibold text-xl">Edit Product</h2>
 
-            @include('profile.partials.delete-product')
+            @include('products.partials.delete-product')
         </div>
 
         <div class="mt-4" x-data="{ imageUrl: '/storage/{{ $product->foto }}' }">
@@ -37,6 +37,20 @@
                         <x-text-input id="harga" class="block mt-1 w-full" type="text" name="harga"
                             :value="$product->harga" x-mask:dynamic="$money($input, ',')" required />
                         <x-input-error :messages="$errors->get('harga')" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <x-input-label for="category_id" :value="__('Kategori')" />
+                        <select id="category_id" name="category_id"
+                            class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
+                            <option value="">{{ __('Tanpa kategori') }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id) == $category->id)>
+                                    {{ $category->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+    configVersion="3"
+    xmlns="https://www.phpdoc.org"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.phpdoc.org https://docs.phpdoc.org/latest/phpdoc.xsd"
+>
+    <title>Tokokita</title>
+    <paths>
+        <output>docs/api</output>
+        <cache>storage/framework/phpdoc-cache</cache>
+    </paths>
+    <version number="1.0.0">
+        <api>
+            <source dsn=".">
+                <path>app</path>
+                <path>database</path>
+            </source>
+            <default-package-name>Tokokita</default-package-name>
+        </api>
+    </version>
+</phpdocumentor>

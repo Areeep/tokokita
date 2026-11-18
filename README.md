@@ -81,6 +81,14 @@ batas waktu eksekusi query (`tests/Feature/ProductDatabaseTest.php`).
 | Laravel Pail | `php artisan pail` untuk melihat log secara langsung |
 | Laravel Telescope | `/telescope` di environment `local`, hanya untuk admin (gate `viewTelescope`) |
 
+## Dokumentasi API
+
+Dihasilkan dari PHPDoc dengan phpDocumentor:
+
+```bash
+composer docs      # hasil di docs/api (buka docs/api/index.html)
+```
+
 ## Dokumentasi lain
 
 - Riwayat perubahan: [`CHANGELOG.md`](CHANGELOG.md)

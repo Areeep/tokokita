@@ -58,6 +58,7 @@ dan dua penjual dengan email acak (lihat tabel `users`).
 ## Pengujian
 
 ```bash
+npm run build        # test halaman membutuhkan manifest Vite
 php artisan test
 ```
 
@@ -84,6 +85,7 @@ batas waktu eksekusi query (`tests/Feature/ProductDatabaseTest.php`).
 
 - Riwayat perubahan: [`CHANGELOG.md`](CHANGELOG.md)
 - Dependensi dan lisensi: [`docs/dependensi.md`](docs/dependensi.md)
+- Catatan debugging: [`docs/debugging.md`](docs/debugging.md)
 
 ## Lisensi
 

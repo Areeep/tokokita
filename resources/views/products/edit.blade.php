@@ -40,6 +40,20 @@
                     </div>
 
                     <div class="mt-4">
+                        <x-input-label for="category_id" :value="__('Kategori')" />
+                        <select id="category_id" name="category_id"
+                            class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
+                            <option value="">{{ __('Tanpa kategori') }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id) == $category->id)>
+                                    {{ $category->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
                         <x-input-label for="deskripsi" :value="__('Deskripsi')" />
                         <x-text-area id="deskripsi" class="block mt-1 w-full" type="text"
                             name="deskripsi">{{ $product->deskripsi }}</x-text-area>
